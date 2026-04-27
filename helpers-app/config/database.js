@@ -18,6 +18,9 @@ class Database {
       this.connection = await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/helpersdb', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        serverSelectionTimeoutMS: 5000,
+        retryWrites: true,
+        w: 'majority',
       });
       console.log('MongoDB connected (Singleton)');
       return this.connection;
