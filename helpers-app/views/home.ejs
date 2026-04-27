@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Helpers — Volunteer Tasks</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include('partials/nav') %>
+
+  <div class="container">
+    <div class="hero">
+      <h1>Find a Way to Help</h1>
+      <p>Browse open tasks and volunteer — no account needed.</p>
+    </div>
+
+    <% if (error && error.length) { %>
+      <div class="alert alert-error"><%= error[0] %></div>
+    <% } %>
+    <% if (success && success.length) { %>
+      <div class="alert alert-success"><%= success[0] %></div>
+    <% } %>
+
+    <div class="page-header">
+      <h1>Open Tasks (<%= tasks.length %>)</h1>
+      <a href="/subscriptions" class="btn btn-secondary">🔍 Look Up My Signups</a>
+    </div>
+
+    <% if (tasks.length === 0) { %>
+      <div class="empty">
+        <div class="icon">📋</div>
+        <p>No tasks available right now. Check back soon!</p>
+      </div>
+    <% } else { %>
+      <% tasks.forEach(task => { %>
+        <div class="task-card">
+          <h3><%= task.title %></h3>
+          <div class="task-meta">
+            Posted by <strong><%= task.owner.username %></strong> &bull;
+            <%= task.volunteers.length %> volunteer<%= task.volunteers.length !== 1 ? 's' : '' %>
+          </div>
+          <% if (task.description) { %>
+            <p class="task-desc"><%= task.description %></p>
+          <% } %>
+
+          <form action="/volunteer" method="POST" class="volunteer-form">
+            <input type="hidden" name="taskId" value="<%= task._id %>" />
+            <input
+              type="text"
+              name="identifier"
+              placeholder="Your email or unique ID"
+              required
+            />
+            <button type="submit" class="btn btn-green">✋ Volunteer</button>
+          </form>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+</body>
+</html>

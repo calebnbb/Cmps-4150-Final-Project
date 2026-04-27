@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Subscriptions — Helpers</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include('partials/nav') %>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>🔍 My Subscriptions</h1>
+    </div>
+
+    <% if (error && error.length) { %>
+      <div class="alert alert-error"><%= error[0] %></div>
+    <% } %>
+    <% if (success && success.length) { %>
+      <div class="alert alert-success"><%= success[0] %></div>
+    <% } %>
+
+    <div class="card">
+      <p style="margin-bottom:1rem; color:#718096;">
+        Enter the email or unique identifier you used when volunteering to see your current signups.
+      </p>
+      <form action="/subscriptions" method="GET" class="lookup-bar">
+        <input
+          type="text"
+          name="id"
+          value="<%= identifier %>"
+          placeholder="Your email or unique ID"
+          required
+        />
+        <button type="submit" class="btn btn-primary">Look Up</button>
+      </form>
+    </div>
+
+    <% if (searched) { %>
+      <% if (tasks.length === 0) { %>
+        <div class="empty">
+          <div class="icon">🤷</div>
+          <p>No active subscriptions found for <strong>"<%= identifier %>"</strong>.</p>
+          <p style="margin-top:.5rem; font-size:.88rem;">
+            You may have been dismissed, or the identifier may not match.
+          </p>
+        </div>
+      <% } else { %>
+        <div class="page-header" style="margin-top:1rem;">
+          <h2 style="font-size:1rem; color:#4a5568;">
+            Found <%= tasks.length %> active subscription<%= tasks.length !== 1 ? 's' : '' %> for
+            "<%= identifier %>"
+          </h2>
+        </div>
+        <% tasks.forEach(task => { %>
+          <div class="task-card">
+            <h3><%= task.title %></h3>
+            <div class="task-meta">
+              By <strong><%= task.owner.username %></strong> &bull;
+              <%= task.volunteers.length %> volunteer<%= task.volunteers.length !== 1 ? 's' : '' %>
+            </div>
+            <% if (task.description) { %>
+              <p class="task-desc"><%= task.description %></p>
+            <% } %>
+            <span style="font-size:.8rem; color:#38a169; font-weight:600;">✅ You are subscribed</span>
+          </div>
+        <% }) %>
+      <% } %>
+    <% } %>
+  </div>
+</body>
+</html>

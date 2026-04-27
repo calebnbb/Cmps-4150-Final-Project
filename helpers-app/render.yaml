@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: helpers-app
+    env: node
+    buildCommand: npm install
+    startCommand: node app.js
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production

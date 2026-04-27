@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Statistics — Helpers</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include('partials/nav') %>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>📊 Volunteer Statistics</h1>
+      <span style="color:#718096; font-size:.9rem;">All currently active tasks</span>
+    </div>
+
+    <% if (stats.length === 0) { %>
+      <div class="empty">
+        <div class="icon">📊</div>
+        <p>No active tasks to report on yet.</p>
+      </div>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Owner</th>
+            <th>Volunteers</th>
+            <th>Created</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% stats.forEach(s => { %>
+            <tr>
+              <td><strong><%= s.title %></strong></td>
+              <td><%= s.owner %></td>
+              <td><span class="badge"><%= s.count %></span></td>
+              <td style="color:#718096; font-size:.85rem;">
+                <%= new Date(s.createdAt).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) %>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+
+      <div class="card" style="margin-top:1.5rem; display:flex; gap:2rem; flex-wrap:wrap;">
+        <div>
+          <div style="font-size:1.8rem; font-weight:700; color:#2b6cb0;"><%= stats.length %></div>
+          <div style="color:#718096; font-size:.88rem;">Active Tasks</div>
+        </div>
+        <div>
+          <div style="font-size:1.8rem; font-weight:700; color:#38a169;">
+            <%= stats.reduce((sum, s) => sum + s.count, 0) %>
+          </div>
+          <div style="color:#718096; font-size:.88rem;">Total Volunteers</div>
+        </div>
+        <div>
+          <div style="font-size:1.8rem; font-weight:700; color:#e53e3e;">
+            <%= stats.length > 0 ? Math.round(stats.reduce((s,t)=>s+t.count,0)/stats.length*10)/10 : 0 %>
+          </div>
+          <div style="color:#718096; font-size:.88rem;">Avg. per Task</div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>

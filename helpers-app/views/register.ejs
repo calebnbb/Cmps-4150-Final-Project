@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register — Helpers</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include('partials/nav') %>
+
+  <div class="form-card">
+    <h1>📝 Register</h1>
+
+    <% if (error && error.length) { %>
+      <div class="alert alert-error"><%= error[0] %></div>
+    <% } %>
+
+    <form action="/register" method="POST">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required autocomplete="username" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required autocomplete="new-password" />
+      </div>
+      <div class="form-group">
+        <label for="confirm">Confirm Password</label>
+        <input type="password" id="confirm" name="confirm" required autocomplete="new-password" />
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Create Account</button>
+    </form>
+
+    <p class="text-center mt-1" style="color:#718096; font-size:.9rem;">
+      Already have an account? <a href="/login">Login</a>
+    </p>
+  </div>
+</body>
+</html>

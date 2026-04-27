@@ -1,0 +1,210 @@
+/* public/css/style.css */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #f0f4f8;
+  color: #2d3748;
+  min-height: 100vh;
+}
+
+/* NAV */
+nav {
+  background: #2b6cb0;
+  color: white;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+nav .brand { font-size: 1.3rem; font-weight: 700; text-decoration: none; color: white; }
+nav .nav-links a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  margin-left: 1.2rem;
+  font-size: 0.95rem;
+  transition: color .2s;
+}
+nav .nav-links a:hover { color: white; }
+nav .nav-links .btn-nav {
+  background: #e53e3e;
+  padding: 6px 14px;
+  border-radius: 6px;
+  color: white;
+}
+nav .nav-links .btn-nav:hover { background: #c53030; }
+
+/* CONTAINER */
+.container { max-width: 960px; margin: 2rem auto; padding: 0 1.5rem; }
+
+/* ALERTS */
+.alert {
+  padding: .85rem 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  font-size: .95rem;
+}
+.alert-error { background: #fff5f5; border: 1px solid #fc8181; color: #c53030; }
+.alert-success { background: #f0fff4; border: 1px solid #68d391; color: #276749; }
+
+/* CARDS */
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  padding: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+.card h2 { font-size: 1.1rem; margin-bottom: .4rem; color: #1a365d; }
+.card .meta { font-size: .82rem; color: #718096; margin-bottom: .8rem; }
+.card p { color: #4a5568; font-size: .95rem; line-height: 1.6; }
+
+/* PAGE HEADER */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.page-header h1 { font-size: 1.6rem; color: #1a365d; }
+
+/* FORMS */
+.form-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  padding: 2rem;
+  max-width: 480px;
+  margin: 3rem auto;
+}
+.form-card h1 { margin-bottom: 1.5rem; color: #1a365d; text-align: center; }
+.form-group { margin-bottom: 1.1rem; }
+.form-group label { display: block; font-size: .9rem; font-weight: 600; margin-bottom: .4rem; color: #4a5568; }
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%;
+  padding: .65rem .9rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: .95rem;
+  transition: border-color .2s;
+  background: #f7fafc;
+}
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: #2b6cb0;
+  background: white;
+}
+.form-group textarea { resize: vertical; min-height: 80px; }
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  padding: .6rem 1.3rem;
+  border: none;
+  border-radius: 8px;
+  font-size: .92rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all .2s;
+}
+.btn-primary { background: #2b6cb0; color: white; }
+.btn-primary:hover { background: #2c5282; }
+.btn-danger { background: #e53e3e; color: white; font-size: .82rem; padding: .4rem .9rem; }
+.btn-danger:hover { background: #c53030; }
+.btn-secondary { background: #edf2f7; color: #4a5568; }
+.btn-secondary:hover { background: #e2e8f0; }
+.btn-green { background: #38a169; color: white; }
+.btn-green:hover { background: #276749; }
+
+/* TASK CARD with volunteer form */
+.task-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  padding: 1.4rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #2b6cb0;
+}
+.task-card h3 { font-size: 1.05rem; color: #1a365d; margin-bottom: .3rem; }
+.task-card .task-meta { font-size: .8rem; color: #a0aec0; margin-bottom: .6rem; }
+.task-card .task-desc { color: #4a5568; font-size: .92rem; margin-bottom: 1rem; }
+
+.volunteer-form { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; }
+.volunteer-form input {
+  flex: 1;
+  min-width: 180px;
+  padding: .5rem .8rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: .88rem;
+}
+.volunteer-form input:focus { outline: none; border-color: #2b6cb0; }
+
+/* DASHBOARD volunteer list */
+.volunteer-list { margin-top: .8rem; }
+.volunteer-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .4rem .8rem;
+  background: #f7fafc;
+  border-radius: 6px;
+  margin-bottom: .4rem;
+  font-size: .88rem;
+}
+.volunteer-item span { color: #4a5568; }
+
+/* STATS TABLE */
+table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+th { background: #2b6cb0; color: white; padding: .8rem 1rem; text-align: left; font-size: .9rem; }
+td { padding: .75rem 1rem; border-bottom: 1px solid #edf2f7; font-size: .92rem; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #f7fafc; }
+.badge {
+  display: inline-block;
+  background: #ebf8ff;
+  color: #2b6cb0;
+  padding: .2rem .6rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: .88rem;
+}
+
+/* LOOKUP FORM */
+.lookup-bar { display: flex; gap: .8rem; margin-bottom: 1.5rem; }
+.lookup-bar input { flex: 1; padding: .65rem 1rem; border: 1px solid #cbd5e0; border-radius: 8px; font-size: .95rem; }
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.hero h1 { font-size: 2rem; color: #1a365d; margin-bottom: .5rem; }
+.hero p { color: #718096; font-size: 1.05rem; }
+
+/* EMPTY STATE */
+.empty { text-align: center; padding: 3rem 1rem; color: #a0aec0; }
+.empty .icon { font-size: 2.5rem; margin-bottom: .8rem; }
+
+/* LINKS */
+a { color: #2b6cb0; }
+
+.text-center { text-align: center; }
+.mt-1 { margin-top: .8rem; }
+.divider { border: none; border-top: 1px solid #e2e8f0; margin: 1.5rem 0; }
+
+/* INLINE FORM (dashboard create task) */
+.create-form {
+  background: white;
+  border-radius: 12px;
+  padding: 1.4rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  margin-bottom: 2rem;
+}
+.create-form h2 { margin-bottom: 1rem; color: #1a365d; font-size: 1.1rem; }
+.form-row { display: flex; gap: .8rem; flex-wrap: wrap; }
+.form-row input, .form-row textarea { flex: 1; }

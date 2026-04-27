@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login — Helpers</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <%- include('partials/nav') %>
+
+  <div class="form-card">
+    <h1>🔐 Login</h1>
+
+    <% if (error && error.length) { %>
+      <div class="alert alert-error"><%= error[0] %></div>
+    <% } %>
+    <% if (success && success.length) { %>
+      <div class="alert alert-success"><%= success[0] %></div>
+    <% } %>
+
+    <form action="/login" method="POST">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required autocomplete="username" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required autocomplete="current-password" />
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Login</button>
+    </form>
+
+    <p class="text-center mt-1" style="color:#718096; font-size:.9rem;">
+      No account? <a href="/register">Register here</a>
+    </p>
+    <p class="text-center mt-1" style="color:#718096; font-size:.9rem;">
+      <a href="/">← Back to tasks</a>
+    </p>
+  </div>
+</body>
+</html>

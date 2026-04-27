@@ -1,0 +1,16 @@
+<!-- views/partials/nav.ejs -->
+<nav>
+  <a href="/" class="brand">🤝 Helpers</a>
+  <div class="nav-links">
+    <a href="/">Tasks</a>
+    <a href="/subscriptions">My Subscriptions</a>
+    <a href="/statistics">Statistics</a>
+    <% if (sessionUser) { %>
+      <a href="/tasks">Dashboard</a>
+      <a href="/logout" class="btn-nav">Logout (<%= sessionUser %>)</a>
+    <% } else { %>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    <% } %>
+  </div>
+</nav>
