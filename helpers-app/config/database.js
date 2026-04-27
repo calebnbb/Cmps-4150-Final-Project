@@ -37,6 +37,5 @@ class Database {
 
 // Export single instance
 const instance = new Database();
-Object.freeze(instance);
 
 module.exports = instance;
