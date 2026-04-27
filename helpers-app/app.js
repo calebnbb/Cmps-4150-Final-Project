@@ -9,9 +9,6 @@ const db = require('./config/database');
 
 const app = express();
 
-// Connect to DB via Singleton
-db.connect();
-
 // View engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -46,6 +43,9 @@ app.use((req, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, '0.0.0.0', () => console.log(`Helpers app running on port ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Helpers app running on port ${PORT}`);
+  db.connect();
+});
 
 module.exports = app;
